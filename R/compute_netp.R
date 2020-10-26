@@ -55,4 +55,5 @@ compute_netp <- function(combined.data){
   engagement$responses <- rowSums(for.model)
   engagement$net.Attentive.engagement <- engagement$Attentive.engagement  -
     pmax(0,(engagement$responses-engagement$Attentive.engagement))
+  return(engagement)
 }
