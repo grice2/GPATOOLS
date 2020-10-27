@@ -1,4 +1,4 @@
-#' The function below groups engagement test data along up to three variables of interest,
+#' This function groups engagement test data along up to three variables of interest,
 #' and computes the reach, positive engagement, negative engagement,
 #' and net positive engagement for each resulting group. It is most useful before plotting.
 #'
