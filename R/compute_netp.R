@@ -29,6 +29,11 @@
 compute_netp <- function(combined.data){
   reaction.metrics <- c('angry','haha','like','love','sad','wow')
   engagement.metrics <- c('Post.Comments', 'Post.Shares')
+  for (feature in c("Ad.Name","Denominator",reaction.metrics,engagement.metrics)){
+    if (!(feature %in% colnames(combined.data))){
+      stop("Variable \"", feature, "\" is missing from \"",deparse(substitute(combined.data)),"\"" )
+    }
+  }
   engagement <- combined.data %>% group_by(Ad.Name) %>%
     mutate(Denominator.reactions=sum(Denominator, na.rm=T))
   summary(engagement$Denominator.reactions)
