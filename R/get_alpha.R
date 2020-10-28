@@ -9,11 +9,12 @@
 #' counts - column containing response counts 
 #' size - column containing sample size for each treatment 
 #' alt - alternative hypothesis; can be "greater", "less", or "two.sided"
+#' NOTE: COLUMN NAMES MUST BE PASSED AS STRINGS
 
 get_alpha <- function(df, treatment, counts, size, alt){
-  pvals <- vector(length = length(df))
+  pvals <- vector(mode="numeric", length = length(df))
  
-  for (i in which(df[[treatment]] != "Control")){
+  for (i in which(df[[treatment]] == "Control")){
     pvals[i] <- 0
   }
    for (i in which(df[[treatment]] != "Control")){
@@ -24,7 +25,8 @@ get_alpha <- function(df, treatment, counts, size, alt){
                       df[[size]][df[[treatment]]=='Control']),
                 alternative = alt)$p.value),4)
     print(i)
-  }
+   }
+  pvals<- pvals[-length(pvals)]
   return(pvals)
   }
 
