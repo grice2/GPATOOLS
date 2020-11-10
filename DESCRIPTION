@@ -12,6 +12,4 @@ License: What license it uses
 Encoding: UTF-8
 LazyData: true
 Imports: 
-	tidyverse,
-	dplyr
 RoxygenNote: 7.1.1
