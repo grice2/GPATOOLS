@@ -1,5 +1,5 @@
 #' This script loaded up the GPA style for plotting.
-#'
+#' @export
 gpa_theme <- function(basesize){
   theme(text=element_text(size=basesize, colour = "black"),
         legend.position = 'top',

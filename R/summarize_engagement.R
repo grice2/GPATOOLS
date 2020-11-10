@@ -9,7 +9,7 @@
 #' resp_var -  typically corresponds to "responses"
 #' weight_var - typically corresponds to "Denominator"
 #' group_var1 - first variable to group by (the other two are optional)
-#'
+#' @export
 summarize_engagement <- function(input_df, eng_var, resp_var, weight_var, group_var1, group_var2, group_var3) {
   if (missing(group_var3)) {
     input_df %>% group_by({{group_var1}}, {{group_var2}}) %>%

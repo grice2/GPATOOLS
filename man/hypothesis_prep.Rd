@@ -2,7 +2,7 @@
 % Please edit documentation in R/hypothesis_prep.R
 \name{hypothesis_prep}
 \alias{hypothesis_prep}
-\title{This function generates p-values and power statistics 
+\title{This function generates p-values and power statistics
 for several treatments against a control, for a single survey question.}
 \usage{
 hypothesis_prep(df, treatment, survey_q, value, pval, power)
@@ -15,6 +15,6 @@ df - df containing survey response data
 treatment - column specifying treatments of interest
 alt - alternative hypothesis; can be "greater", "less", or "two.sided"
 pval - column to hold p-values
-power - column to hold power values 
+power - column to hold power values
 NOTE: PVAL & POWER COLUMN NAMES MUST BE PASSED AS STRINGS
 }

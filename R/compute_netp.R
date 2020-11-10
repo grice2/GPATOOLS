@@ -25,7 +25,7 @@
 #' 'Post.Comments', 'Post.Shares'
 #' Ad.Name,
 #' Denominator
-#'
+#' @export
 compute_netp <- function(combined.data){
   reaction.metrics <- c('angry','haha','like','love','sad','wow')
   engagement.metrics <- c('Post.Comments', 'Post.Shares')
