@@ -2,7 +2,7 @@
 % Please edit documentation in R/summarize_engagement.R
 \name{summarize_engagement}
 \alias{summarize_engagement}
-\title{The function below groups engagement test data along up to three variables of interest,
+\title{This function groups engagement test data along up to three variables of interest,
 and computes the reach, positive engagement, negative engagement,
 and net positive engagement for each resulting group. It is most useful before plotting.}
 \usage{
