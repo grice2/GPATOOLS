@@ -7,7 +7,12 @@
 #' 
 #' Required Parameters:
 #'
-#' df - df containing survey response data, summarized at the treatment level and containing counts of responses
+#' df - df containing survey response data, summarized at the treatment level and containing counts of responses for
+#' several treatments against a SINGLE control, for a single survey question. 
+#' 
+#' Required Parameters:
+#'
+#' df - df containing survey response data
 #' treatment - column specifying treatments of interest
 #' counts - column containing response counts 
 #' size - column containing sample size for each treatment 
