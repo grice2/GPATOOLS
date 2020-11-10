@@ -13,8 +13,5 @@ Encoding: UTF-8
 LazyData: true
 Imports:
 	tidyverse,
-  stringr,
   reshape2,
-  base,
-  dplyr
 RoxygenNote: 7.1.1
