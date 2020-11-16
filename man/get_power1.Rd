@@ -22,7 +22,7 @@ get_power1(
 
 \item{size}{Column containing sample size for each treatment (default to be "total")}
 
-\item{alt}{Alternative hypothesis; can be "greater", "less", or "two.sided" (default to be "greater")}
+\item{alt}{Alternative hypothesis; can be "one.sided" or "two.sided" (default to be "one.sided")}
 
 \item{counts}{Column containing response counts for the question of interest (default to be "responses")}
 }

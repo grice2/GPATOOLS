@@ -9,7 +9,7 @@
 #' @param survey_q The survey question of interest to summarise by
 #' @param counts Column containing response counts for the question of interest (default to be "responses")
 #' @param size Column containing sample size for each treatment (default to be "total")
-#' @param alt Alternative hypothesis; can be "greater", "less", or "two.sided" (default to be "greater")
+#' @param alt Alternative hypothesis; can be "one.sided" or "two.sided" (default to be "one.sided")
 #' @return A new data frame containing input data plus an additional column for power values
 #' @examples get_power1(data = df, treatment = "ads", suvey_q = "q4",  counts="responses", size = "total", alt="greater")
 #' @export
