@@ -2,12 +2,12 @@
 #'
 #' This function generates the power values associated with
 #' several treatments against a control, for a single survey question where
-#' the sample size is equal across all (treatment and control). For unequal sample size, see get_power2
+#' the sample size is equal across all (treatment and control). For unequal sample size, see get_power2()
 #'
 #' @param data Data containing survey response data (pre-processed by hypos_prep or equivalent)
 #' @param treatment Column specifying treatments of interest (e.g., ad_name)
-#' @param survey_q The survey question of interest to summarise by
-#' @param counts Column containing response counts for the question of interest (default to be "responses")
+#' @param survey_q The survey question of interest 
+#' @param counts Column containing response counts for the response of interest (default to be "responses")
 #' @param size Column containing sample size for each treatment (default to be "total")
 #' @param alt Alternative hypothesis; can be "one.sided" or "two.sided" (default to be "one.sided")
 #' @return A new data frame containing input data plus an additional column for power values
