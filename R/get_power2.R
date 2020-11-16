@@ -19,10 +19,10 @@ get_power2 <- function(data, treatment, survey_q, prop="percent", sample1 = valu
   name <- paste0("power_",survey_q)
   data[[name]] <- 0
 
-  h2 <- ES.h(data[[prop]][which(data[[treatment]] != "Control")], data[[prop]][which(data[[treatment]] == "Control")])
+  h2 <- pwr::ES.h(data[[prop]][which(data[[treatment]] != "Control")], data[[prop]][which(data[[treatment]] == "Control")])
 
   data[[name]][which(data[[treatment]] != "Control")] <-
-    round(pwr.2p2n.test(h2, n1=sample1, n2=sample2,
+    round(pwr::pwr.2p2n.test(h2, n1=sample1, n2=sample2,
                         sig.level = 0.05,
                         power = NULL,
                         alternative = "greater")$power,4)
