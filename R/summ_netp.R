@@ -11,7 +11,7 @@
 #' @return A smaller dataframe that contains the weighted mean of net attentive engagement by the specified variable(s)
 #' @examples summarize_netp(data = df, var1 = ad_name, var2 = age)
 #' @export
-summarize_netp <- function(data, var1, var2, var3) {
+summ_netp <- function(data, var1, var2, var3) {
   for (feature in c("attentive_engagement","denominator","responses")){
     if (!(feature %in% colnames(data))){
       stop("Variable \"", feature, "\" is missing from \"", deparse(substitute(data)),"\"" )

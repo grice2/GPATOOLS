@@ -26,7 +26,7 @@
 #' and total engagement rate (i.e., responses)
 #' @examples compute_netp(data = combined.data, denominator = "reach")
 #' @export
-compute_netp <- function(data, denominator){
+get_netp <- function(data, denominator){
   data <- janitor::clean_names(data)
   data$denominator <- data[[denominator]]
   data$denominator[is.na(data$denominator)] <- 0

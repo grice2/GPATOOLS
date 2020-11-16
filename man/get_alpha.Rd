@@ -2,28 +2,45 @@
 % Please edit documentation in R/get_alpha.R
 \name{get_alpha}
 \alias{get_alpha}
-\title{This function generates the p-values associated with
-several treatments against a SINGLE control, for a single survey question.}
+\title{Compute GPA's Persuasion Test P-values}
 \usage{
-get_alpha(df, treatment, counts, size, alt)
+get_alpha(
+  data,
+  treatment,
+  survey_q,
+  counts = "responses",
+  size = "total",
+  alt = "greater"
+)
+}
+\arguments{
+\item{data}{Data containing survey response data (pre-processed by hypos_prep)}
+
+\item{treatment}{Column specifying treatments of interest (e.g., ad_name)}
+
+\item{survey_q}{The survey question of interest to summarise by}
+
+\item{counts}{Column containing response counts for the question of interest (default to be "responses")}
+
+\item{size}{Column containing sample size for each treatment (default to be "total")}
+
+\item{alt}{Alternative hypothesis; can be "greater", "less", or "two.sided" (default to be "greater")}
+}
+\value{
+A new data frame that contains an additional column for p-values
 }
 \description{
-#Preprocessing that generates input DF usually looks like this:
+This function generates the p-values associated with
+several treatments against a SINGLE control, for a single survey question's response.
+}
+\details{
+Data must have been preprocessed by hypos_prep() or equivalence. Data containing survey response data,
+summarized at the treatment level and containing counts of responses for
+several treatments against a SINGLE control, for a single survey question.
+Preprocessing that generates input data usually looks like this:
 Q4.ad.analysis <- combined.data %>% group_by(Ad,Q4) %>% summarise(n_q4=n()) %>% group_by(Ad) %>%
 mutate(total_q4 = sum(n_q4)) %>% mutate(percent_q4 = n_q4/total_q4) %>% filter(Q4 == 1)
 }
-\details{
-Required Parameters:
-
-df - df containing survey response data, summarized at the treatment level and containing counts of responses for
-several treatments against a SINGLE control, for a single survey question.
-
-Required Parameters:
-
-df - df containing survey response data
-treatment - column specifying treatments of interest
-counts - column containing response counts
-size - column containing sample size for each treatment
-alt - alternative hypothesis; can be "greater", "less", or "two.sided"
-NOTE: COLUMN NAMES MUST BE PASSED AS STRINGS
+\examples{
+get_alpha(data = df, treatment = "ads", suvey_q = "q4", counts="responses", size = "total", alt="greater")
 }
