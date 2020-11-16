@@ -9,8 +9,8 @@ get_power2(
   treatment,
   survey_q,
   prop = "percent",
-  sample1 = value1,
-  sample2 = value2,
+  sample1,
+  sample2,
   alt = "greater"
 )
 }

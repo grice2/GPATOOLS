@@ -15,7 +15,7 @@
 #' @examples get_power2(data = df, treatment = "ads", suvey_q = "Q4",  n1=1200, n2=600, alt="greater")
 #' @export
 
-get_power2 <- function(data, treatment, survey_q, prop="percent", sample1 = value1, sample2 = value2, alt="greater"){
+get_power2 <- function(data, treatment, survey_q, prop="percent", sample1, sample2, alt="greater"){
   name <- paste0("power_",survey_q)
   data[[name]] <- 0
 
