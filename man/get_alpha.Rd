@@ -14,7 +14,7 @@ get_alpha(
 )
 }
 \arguments{
-\item{data}{Data containing survey response data (pre-processed by hypos_prep)}
+\item{data}{Data containing survey response data (pre-processed by hypos_prep or equivalent)}
 
 \item{treatment}{Column specifying treatments of interest (e.g., ad_name)}
 
@@ -27,19 +27,17 @@ get_alpha(
 \item{alt}{Alternative hypothesis; can be "greater", "less", or "two.sided" (default to be "greater")}
 }
 \value{
-A new data frame that contains an additional column for p-values
+A new data frame containing input data plus an additional column for p-values
 }
 \description{
 This function generates the p-values associated with
-several treatments against a SINGLE control, for a single survey question's response.
+several treatments of inteterest against a single control, for responses to a single survey question.
 }
 \details{
-Data must have been preprocessed by hypos_prep() or equivalence. Data containing survey response data,
-summarized at the treatment level and containing counts of responses for
-several treatments against a SINGLE control, for a single survey question.
-Preprocessing that generates input data usually looks like this:
-Q4.ad.analysis <- combined.data %>% group_by(Ad,Q4) %>% summarise(n_q4=n()) %>% group_by(Ad) %>%
-mutate(total_q4 = sum(n_q4)) %>% mutate(percent_q4 = n_q4/total_q4) %>% filter(Q4 == 1)
+Data must have been preprocessed by hypos_prep() or equivalent, and should contain survey response data
+summarized at the desired treatment level, for a single survey question. Preprocessing that generates input data usually looks like this:
+input_df <- survey_data %>% group_by(treatment,question) %>% summarise(responses=n()) %>% group_by(treatment) %>%
+mutate(total = sum(responses)) %>% mutate(percent = responses/total) %>% filter(question == value)
 }
 \examples{
 get_alpha(data = df, treatment = "ads", suvey_q = "q4", counts="responses", size = "total", alt="greater")

@@ -14,7 +14,7 @@ get_power1(
 )
 }
 \arguments{
-\item{data}{Data containing survey response data (pre-processed by hypos_prep)}
+\item{data}{Data containing survey response data (pre-processed by hypos_prep or equivalent)}
 
 \item{treatment}{Column specifying treatments of interest (e.g., ad_name)}
 
@@ -27,12 +27,12 @@ get_power1(
 \item{counts}{Column containing response counts for the question of interest (default to be "responses")}
 }
 \value{
-A new data frame that contains an additional column for power statistics
+A new data frame containing input data plus an additional column for power values
 }
 \description{
 This function generates the power values associated with
 several treatments against a control, for a single survey question where
-SAMPLE SIZE IS EQUAL. For unequal sample size, see get_power2
+the sample size is equal across all (treatment and control). For unequal sample size, see get_power2
 }
 \examples{
 get_power1(data = df, treatment = "ads", suvey_q = "q4",  counts="responses", size = "total", alt="greater")

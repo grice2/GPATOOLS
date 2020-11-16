@@ -1,12 +1,13 @@
 #' Data Preparation for P-value and Power Statistics Computation
 #'
-#' This function summarises the data by specific question(s) and its value in the survey data.
+#' This function summarises survey reponse data at the desired treatment level, 
+#' for a single question and a single response of interest.
 #'
 #' @param data Data containing survey response data
-#' @param treatment The treatment of interest (e.g., ad_name, theme, etc.)
+#' @param treatment Column containing the treatments of interest (e.g., ad_name, theme, etc.)
 #' @param survey_q The survey question of interest to summarise by
 #' @return A smaller data frame ready for analysis
-#' @param q_value The value of interest to filter by.
+#' @param q_value The response of interest to filter by
 #' @examples hypos_prep(data = survey, treatment = "ad", survey_q = "q4", value = "agree")
 #' @export
 hypos_prep <- function(data, treatment, survey_q, q_value){

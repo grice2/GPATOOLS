@@ -9,17 +9,18 @@ hypos_prep(data, treatment, survey_q, q_value)
 \arguments{
 \item{data}{Data containing survey response data}
 
-\item{treatment}{The treatment of interest (e.g., ad_name, theme, etc.)}
+\item{treatment}{Column containing the treatments of interest (e.g., ad_name, theme, etc.)}
 
 \item{survey_q}{The survey question of interest to summarise by}
 
-\item{q_value}{The value of interest to filter by.}
+\item{q_value}{The response of interest to filter by}
 }
 \value{
 A smaller data frame ready for analysis
 }
 \description{
-This function summarises the data by specific question(s) and its value in the survey data.
+This function summarises survey reponse data at the desired treatment level, 
+for a single question and a single response of interest.
 }
 \examples{
 hypos_prep(data = survey, treatment = "ad", survey_q = "q4", value = "agree")
