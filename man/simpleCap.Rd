@@ -2,10 +2,19 @@
 % Please edit documentation in R/simpleCap.R
 \name{simpleCap}
 \alias{simpleCap}
-\title{Capitalize the first letter of every word in a string}
+\title{Capitalize the first letter of every word}
 \usage{
 simpleCap(x)
 }
+\arguments{
+\item{x}{A string object}
+}
+\value{
+A captitalized string
+}
 \description{
-Capitalize the first letter of every word in a string
+This function will capitalize the first letter of every word in a given string
+}
+\examples{
+ad.info$text <- sapply(ad.info$text, simpleCap)
 }
