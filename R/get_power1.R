@@ -1,6 +1,6 @@
 #' This function generates the power values associated with
-#' several treatments against a control, for a single survey question where
-#' SAMPLE SIZE IS EQUAL. FOR UNEQUAL SAMPLE SIZES, SEE get_power2
+#' several treatments against a single control for a single survey question, where
+#' sample sizes are equal. For unequal sample sizes, see get_power2
 #'
 #' Required Parameters:
 #'

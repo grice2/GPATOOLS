@@ -1,7 +1,7 @@
 #' This function generates the p-values associated with
-#' several treatments against a SINGLE control, for a single survey question.
+#' several treatments against a single control for a single survey question.
 #'
-#' #Preprocessing that generates input DF usually looks like this:
+#' #Preprocessing that generates the input df usually looks something like this:
 #' Q4.ad.analysis <- combined.data %>% group_by(Ad,Q4) %>% summarise(n_q4=n()) %>% group_by(Ad) %>%
 #' mutate(total_q4 = sum(n_q4)) %>% mutate(percent_q4 = n_q4/total_q4) %>% filter(Q4 == 1)
 #'
@@ -9,16 +9,12 @@
 #'
 #' df - df containing survey response data, summarized at the treatment level and containing counts of responses for
 #' several treatments against a SINGLE control, for a single survey question.
-#'
-#' Required Parameters:
-#'
-#' df - df containing survey response data
 #' treatment - column specifying treatments of interest
 #' counts - column containing response counts
 #' size - column containing sample size for each treatment
 #' alt - alternative hypothesis; can be "greater", "less", or "two.sided"
 #' NOTE: COLUMN NAMES MUST BE PASSED AS STRINGS
-#' @export
+#' 
 get_alpha <- function(df, treatment, counts, size, alt){
   pvals <- vector(mode="numeric", length = length(df))
 
