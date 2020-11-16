@@ -1,20 +1,22 @@
-#' This function generates p-values and power statistics
-#' for several treatments against a control, for a single survey question.
+#' Data Preparation for P-value and Power Statistics Computation
 #'
-#' Required Parameters:
+#' This function summarises the data by specific question(s) and its value in the survey data.
 #'
-#' df - df containing survey response data
-#' treatment - column specifying treatments of interest
-#' alt - alternative hypothesis; can be "greater", "less", or "two.sided"
-#' pval - column to hold p-values
-#' power - column to hold power values
-#' NOTE: PVAL & POWER COLUMN NAMES MUST BE PASSED AS STRINGS
+#' @param data Data containing survey response data
+#' @param treatment The treatment of interest (e.g., ad_name, theme, etc.)
+#' @param survey_q The survey question of interest to summarise by
+#' @return A smaller data frame that contains place-holder columns for p-value and power statsitics
+#' @param q_value The value of interest to filter by.
+#' @examples hypos_prep(data = survey, treatment = ad, survey_q = q4, value = "agree")
 #' @export
-hypothesis_prep <- function(df, treatment, survey_q, value, pval, power){
-
-  prep <- df %>% group_by({{treatment}},{{survey_q}}) %>% summarise(responses=n()) %>%
-    mutate(total = sum(responses)) %>% mutate(percent = responses/total) %>% filter({{survey_q}} == value)
-  prep[[pval]] <- 0
-  prep[[power]] <- 0
+hypos_prep <- function(data, treatment, survey_q, q_value){
+  prep <- data %>% dplyr::group_by({{treatment}},{{survey_q}}) %>%
+    dplyr::summarise(responses=n()) %>%
+    dplyr::group_by({{treatment}}) %>%
+    mutate(total = sum(responses)) %>%
+    mutate(percent = responses/total) %>%
+    filter({{survey_q}} == q_value)
+  prep$pval <- 0
+  prep$power <- 0
   return(prep)
   }
