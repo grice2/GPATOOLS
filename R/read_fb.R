@@ -21,7 +21,7 @@ read_fb <- function(df_reactions_dir,df_engagement_dir) {
       stop("Variable \"", feature, "\" is missing from \"",deparse(substitute(df_engagement)),"\"" )
     }
   }
-  df_reactions <- df_reactions %>% dcast(ad_name~post_reaction_type, value.var = 'post_reactions')
+  df_reactions <- df_reactions %>% reshape2::dcast(ad_name~post_reaction_type, value.var = 'post_reactions')
   df <- dplyr::full_join(df_engagement,df_reactions)
   df$audience <- str_extract(df$ad_name, 'Audience [0-9]+')
   df$ad_id <- str_extract(df$ad_name, 'Ad [0-9]+')

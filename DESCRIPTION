@@ -14,5 +14,6 @@ LazyData: true
 Imports: 
 	dplyr,
 	data.table,
-	janitor
+	janitor,
+	reshape2
 RoxygenNote: 7.1.1
