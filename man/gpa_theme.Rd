@@ -2,10 +2,31 @@
 % Please edit documentation in R/gpa_theme.R
 \name{gpa_theme}
 \alias{gpa_theme}
-\title{This script loaded up the GPA style for plotting.}
+\title{GPA Plotting Style}
 \usage{
 gpa_theme(basesize)
 }
+\arguments{
+\item{basesize}{The size of your plot tittle, which will then be used to estimate size of other texts in your plot}
+}
 \description{
-This script loaded up the GPA style for plotting.
+This function is used as a supplement to 'ggplot' command to ensure the plots are done
+in accordance to GPA Style Guide.
+}
+\examples{
+ggplot(ad.text.analysis, aes(x=short.text, y=netp)) +
+geom_bar(stat='identity', position = "dodge", fill = primary.colors[1])+
+coord_flip()+
+geom_text(color = ad.text.analysis$colors,
+          aes(x=short.text, y= netp, hjust = ifelse(netp<0.4/100,-0.1,1.1),
+              label = format(round(netp,3)*100),nsmall=1),
+              size = 3, fontface="bold") +
+labs(x=NULL, y="\nNet Attentive Engagement (\%)\n",
+       caption = "Source: GPA/RA/RE Austria Creative Engagement Test Oct 2020")+
+scale_y_continuous(labels = function(x) paste0(x*100))+
+gpa_theme(11)+
+scale_fill_manual('',values=primary.colors[c(2:1)])+
+theme(axis.text.x = element_blank())+
+ggsave('Austria-creative-ad-text.png', width = 6, height = 3, units = 'in')
+
 }
