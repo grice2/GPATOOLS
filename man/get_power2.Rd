@@ -9,8 +9,8 @@ get_power2(
   treatment,
   survey_q,
   prop = "percent",
-  sample1,
-  sample2,
+  n1,
+  n2,
   alt = "greater"
 )
 }
@@ -23,9 +23,9 @@ get_power2(
 
 \item{prop}{Column containing proportions for the response of interest (default to be "responses")}
 
-\item{sample1}{Sample size for treatments}
+\item{n1}{Sample size for treatments}
 
-\item{sample2}{Sample size for control}
+\item{n2}{Sample size for control}
 
 \item{alt}{Alternative hypothesis; can be "greater", "less", or "two.sided" (default to be "greater")}
 }
