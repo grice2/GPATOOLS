@@ -21,12 +21,14 @@
 #' Facebook engagement metrics: 'angry', 'haha', 'like', 'love', 'sad', 'wow', 'post_comments', 'post_shares';
 #' Ad information: 'ad_name'; and
 #' Normalization metric: denominator
+#' @param denominator The normalization metric, which is usually 'impressions', 'reach', or 'video_views'
 #' @return Data frame or tibble with the net attentive engagement score (i.e.,net_attentive_engagement), positive engagement rate (i.e., attentive_engagement)
 #' and total engagement rate (i.e., responses)
 #' @examples compute_netp(combined.data)
 #' @export
-compute_netp <- function(df){
+compute_netp <- function(df, denominator){
   df <- janitor::clean_names(df)
+  df$denominator <- df[[denominator]]
   reaction.metrics <- c('angry','haha','like','love','sad','wow')
   engagement.metrics <- c('post_comments', 'post_shares')
   for (feature in c("ad_name","denominator",reaction.metrics,engagement.metrics)){

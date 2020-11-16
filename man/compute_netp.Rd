@@ -4,13 +4,15 @@
 \alias{compute_netp}
 \title{Compute GPA's net attentive engagement metric given Facebook's engagement and reaction metrics}
 \usage{
-compute_netp(df)
+compute_netp(df, denominator)
 }
 \arguments{
 \item{df}{Data frame or tibble that contains the following columns:
 Facebook engagement metrics: 'angry', 'haha', 'like', 'love', 'sad', 'wow', 'post_comments', 'post_shares';
 Ad information: 'ad_name'; and
 Normalization metric: denominator}
+
+\item{denominator}{The normalization metric, which is usually 'impressions', 'reach', or 'video_views'}
 }
 \value{
 Data frame or tibble with the net attentive engagement score (i.e.,net_attentive_engagement), positive engagement rate (i.e., attentive_engagement)
