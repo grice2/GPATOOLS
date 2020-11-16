@@ -38,5 +38,5 @@ several treatments against a control, for a single survey question, where
 the sample size is different between treatment and control.
 }
 \examples{
-get_power1(data = df, treatment = "ads", suvey_q = "Q4",  n1=1200, n2=600, alt="greater")
+get_power2(data = df, treatment = "ads", suvey_q = "Q4",  n1=1200, n2=600, alt="greater")
 }
