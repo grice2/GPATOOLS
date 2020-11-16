@@ -17,26 +17,27 @@
 #' In this case, we have a couple of lines where denominator is
 #' many many thousands, so taking the weights off shows the real patterns more clearly.
 #'
-#' @param df Data frame or tibble that contains the following columns:
+#' @param data Data frame or tibble that contains the following columns:
 #' Facebook engagement metrics: 'angry', 'haha', 'like', 'love', 'sad', 'wow', 'post_comments', 'post_shares';
 #' Ad information: 'ad_name'; and
 #' Normalization metric: denominator
 #' @param denominator The normalization metric, which is usually 'impressions', 'reach', or 'video_views'
 #' @return Data frame or tibble with the net attentive engagement score (i.e.,net_attentive_engagement), positive engagement rate (i.e., attentive_engagement)
 #' and total engagement rate (i.e., responses)
-#' @examples compute_netp(combined.data)
+#' @examples compute_netp(data = combined.data, denominator = "reach")
 #' @export
-compute_netp <- function(df, denominator){
-  df <- janitor::clean_names(df)
-  df$denominator <- df[[denominator]]
+compute_netp <- function(data, denominator){
+  data <- janitor::clean_names(data)
+  data$denominator <- data[[denominator]]
+  data$denominator[is.na(data$denominator)] <- 0
   reaction.metrics <- c('angry','haha','like','love','sad','wow')
   engagement.metrics <- c('post_comments', 'post_shares')
   for (feature in c("ad_name","denominator",reaction.metrics,engagement.metrics)){
-    if (!(feature %in% colnames(df))){
-      stop("Variable \"", feature, "\" is missing from \"",deparse(substitute(df)),"\"" )
+    if (!(feature %in% colnames(data))){
+      stop("Variable \"", feature, "\" is missing from \"",deparse(substitute(data)),"\"" )
     }
   }
-  engagement <- df %>% group_by(ad_name) %>%
+  engagement <- data %>% group_by(ad_name) %>%
     mutate(denominator_reactions=sum(denominator, na.rm=T))
   summary(engagement$denominator_reactions)
   for.model.engagement <- apply(engagement[,engagement.metrics], 2,
@@ -51,10 +52,6 @@ compute_netp <- function(df, denominator){
     return(x)
   })
   for.model <- cbind(for.model.engagement,for.model.reactions) %>% as_tibble()
-  head(for.model)
-  summary(for.model)
-  cor(for.model)
-  summary(engagement$denominator)
   coefs <- c(0.021879,0.378715,-1.978481,0.086403,3.720785,-0.016704,0.131512)
   attentive_engagement_linear <-  as.matrix(for.model[,c('post_comments', 'post_shares','angry','haha','love','sad','wow')]) %*%
     as.matrix(coefs, ncol=1)

@@ -4,10 +4,10 @@
 \alias{compute_netp}
 \title{Compute GPA's net attentive engagement metric given Facebook's engagement and reaction metrics}
 \usage{
-compute_netp(df, denominator)
+compute_netp(data, denominator)
 }
 \arguments{
-\item{df}{Data frame or tibble that contains the following columns:
+\item{data}{Data frame or tibble that contains the following columns:
 Facebook engagement metrics: 'angry', 'haha', 'like', 'love', 'sad', 'wow', 'post_comments', 'post_shares';
 Ad information: 'ad_name'; and
 Normalization metric: denominator}
@@ -38,5 +38,5 @@ In this case, we have a couple of lines where denominator is
 many many thousands, so taking the weights off shows the real patterns more clearly.
 }
 \examples{
-compute_netp(combined.data)
+compute_netp(data = combined.data, denominator = "reach")
 }
