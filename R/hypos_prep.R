@@ -10,13 +10,13 @@
 #' @examples hypos_prep(data = survey, treatment = "ad", survey_q = "q4", value = "agree")
 #' @export
 hypos_prep <- function(data, treatment, survey_q, q_value){
-  treatment_var <- rlang::quo(treatment)
-  survey_q_var <- rlang::quo(survey_q)
+  treatment_var <- rlang::sym(treatment)
+  survey_q_var <- rlang::sym(survey_q)
   prep <- data %>% dplyr::group_by(!!treatment_var,!!survey_q_var) %>%
     dplyr::summarise(responses=n()) %>%
     dplyr::group_by(!!treatment_var) %>%
     mutate(total = sum(responses)) %>%
     mutate(percent = responses/total) %>%
-    filter({{survey_q}} == q_value)
+    filter(!!survey_q_var == q_value)
   return(prep)
   }

@@ -7,10 +7,10 @@
 get_power1(
   data,
   treatment,
-  suvey_q,
+  survey_q,
   prop = "percent",
   size = "total",
-  alt = "greater"
+  alt = "one.sided"
 )
 }
 \arguments{
@@ -18,11 +18,11 @@ get_power1(
 
 \item{treatment}{Column specifying treatments of interest (e.g., ad_name)}
 
+\item{survey_q}{The survey question of interest to summarise by}
+
 \item{size}{Column containing sample size for each treatment (default to be "total")}
 
 \item{alt}{Alternative hypothesis; can be "greater", "less", or "two.sided" (default to be "greater")}
-
-\item{survey_q}{The survey question of interest to summarise by}
 
 \item{counts}{Column containing response counts for the question of interest (default to be "responses")}
 }

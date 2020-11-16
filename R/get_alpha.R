@@ -20,7 +20,7 @@
 #' @examples get_alpha(data = df, treatment = "ads", suvey_q = "q4", counts="responses", size = "total", alt="greater")
 #' @export
 get_alpha <- function(data, treatment, survey_q, counts="responses", size = "total", alt="greater"){
-  name <- paste0("pval_",suvey_q)
+  name <- paste0("pval_",survey_q)
   data[[name]] <- 0
   for (i in which(data[[treatment]] != "Control")){
     data[[name]][i] <-round(

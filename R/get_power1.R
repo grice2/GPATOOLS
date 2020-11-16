@@ -13,11 +13,11 @@
 #' @return A new data frame that contains an additional column for power statistics
 #' @examples get_power1(data = df, treatment = "ads", suvey_q = "q4",  counts="responses", size = "total", alt="greater")
 #' @export
-get_power1 <- function(data, treatment, suvey_q, prop="percent", size = "total", alt="greater"){
-  name <- paste0("power_",suvey_q)
+get_power1 <- function(data, treatment, survey_q, prop="percent", size = "total", alt="one.sided"){
+  name <- paste0("power_",survey_q)
   data[[name]] <- 0
   data[[name]][which(data[[treatment]] != "Control")] <-
-    round(power.prop.test(n=size,
+    round(power.prop.test(n=data[[size]],
                           p1 = data[[prop]][which(data[[treatment]] != "Control")],
                           p2 = data[[prop]][which(data[[treatment]] == "Control")],
                           sig.level = 0.05,
