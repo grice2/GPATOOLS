@@ -2,35 +2,41 @@
 % Please edit documentation in R/compute_netp.R
 \name{compute_netp}
 \alias{compute_netp}
-\title{This script will compute the net attentive engagement metric given a dataset}
+\title{Compute GPA's net attentive engagement metric given Facebook's engagement and reaction metrics}
 \usage{
-compute_netp(combined.data)
+compute_netp(data, denominator)
+}
+\arguments{
+\item{data}{Data frame or tibble that contains the following columns:
+Facebook engagement metrics: 'angry', 'haha', 'like', 'love', 'sad', 'wow', 'post_comments', 'post_shares';
+Ad information: 'ad_name'; and
+Normalization metric: denominator}
+
+\item{denominator}{The normalization metric, which is usually 'impressions', 'reach', or 'video_views'}
+}
+\value{
+Data frame or tibble with the net attentive engagement score (i.e.,net_attentive_engagement), positive engagement rate (i.e., attentive_engagement)
+and total engagement rate (i.e., responses)
 }
 \description{
-Reaction types are collected at the daily but not gender/age level
-so the denominator there is larger
+This function will compute GPA's net attentive engagement according to the formula:
+Attentive Engagement = 0.008984 + 0.021879*Comments + 0.378715*Shares + (-1.978481)*Angry + 0.086403*HaHa + 3.720785*Love + (-0.016704)*Sad + 0.131512*Wow + 1*Like
 }
 \details{
-First, turn each of the metrics into a proportion of Reach
+First, each of the metrics was turned into a proportion of Reach.
+Reaction types are collected at the daily but not gender/age level, so the denominator there is larger
+The Response row sum is a rough proportion of all reach that had any of the responses
+there could be duplication, but, in practice, it's not a big deal.
+This is net attentive engagement, which is 'Attentive' minus 'Not Attentive'.
+Due to the larger than 1 coefficients, it is possible for 'Attentive Engagement' to be greater than the total responses
+In that case, we assume that negative was zero.
 
-We used a glm version of a weighted average
-I have used IRT and other approaches, but this is simplest and seems most stable
-In the past, I have also weighted this by Reach, but that tends to create biases
-when FB has been allowed to optimize. In this case, we have a couple of lines where Denominator is
-many many thousands, so taking the weights off shows the real patterns more clearly
-
-Likes are added back
-
-The Response row sum is a rough proportion of all Denominator that had any of the responses
-there could be duplication, but, in practice, it's not a big deal
-
-This is net Attentive engagement. It's Attentive minus not Attentive.
-because of the larger than 1 coefficients, it is possible for Attentive engagement to be greater than the total responses
-In that case, we assume that negative was zero
-
-data will need the following columns
-'angry','haha','like','love','sad','wow'
-'Post.Comments', 'Post.Shares'
-Ad.Name,
-Denominator
+We used a glm version of a weighted average to create the formula.
+GPA/RA/RE have used IRT and other approaches, but glm is simplest and seems most stable.
+In the past, GPA/RA/RE have also weighted this by Reach, but that tends to create biases when FB has been allowed to optimize.
+In this case, we have a couple of lines where denominator is
+many many thousands, so taking the weights off shows the real patterns more clearly.
+}
+\examples{
+compute_netp(data = combined.data, denominator = "reach")
 }
