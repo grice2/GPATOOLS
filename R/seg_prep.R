@@ -49,4 +49,6 @@ seg_prep <- function(data, start_idx) {
 
   data[,q_id]<- mutate_if(data[,q_id],is.factor, as.character)
   data[,q_id]<- mutate_if(data[,q_id],is.factor, as.numeric)
+
+  return(data)
 }
