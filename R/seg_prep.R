@@ -7,7 +7,7 @@
 #' @return A new data frame containing input data plus an additional column for power values
 #' @examples get_seg(data = df, start_idx= 35)
 #' @export
-get_seg <- function(data, start_idx) {
+seg_prep <- function(data, start_idx) {
   colnames(data)[start_idx] <- "E018"  
   data$E018 <- factor(data$E018, levels = c(1,2,3), labels = c(1,2,1.5))
   
