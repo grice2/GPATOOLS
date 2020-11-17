@@ -2,7 +2,7 @@
 % Please edit documentation in R/seg_prep.R
 \name{seg_prep}
 \alias{seg_prep}
-\title{Re-format GPA for Audience Segmentation}
+\title{Re-format GPA Survey Data for Audience Segmentation}
 \usage{
 seg_prep(data, start_idx)
 }
@@ -12,7 +12,7 @@ seg_prep(data, start_idx)
 \item{start_idx}{The column index that correspond to the first value question in the survey}
 }
 \value{
-A new data frame containing input data plus an additional column for power values
+A new data frame with value-based questions properly coded
 }
 \description{
 This function gets the survey data ready for audience segmentation model
