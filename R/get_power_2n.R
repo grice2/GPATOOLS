@@ -12,10 +12,9 @@
 #' @param n2 Sample size for control
 #' @param alt Alternative hypothesis; can be "greater", "less", or "two.sided" (default to be "greater")
 #' @return A new data frame containing input data plus an additional column for power values
-#' @examples get_power2(data = df, treatment = "ads", suvey_q = "Q4",  n1=1200, n2=600, alt="greater")
+#' @examples get_power_2n(data = df, treatment = "ads", suvey_q = "Q4",  n1=1200, n2=600, alt="greater")
 #' @export
-
-get_power2 <- function(data, treatment, survey_q, prop="percent", n1, n2, alt="greater"){
+get_power_2n <- function(data, treatment, survey_q, prop="percent", n1, n2, alt="greater"){
   name <- paste0("power_",survey_q)
   data[[name]] <- 0
 

@@ -2,8 +2,9 @@
 
 export(get_alpha)
 export(get_netp)
-export(get_power1)
-export(get_power2)
+export(get_power_1n)
+export(get_power_2n)
+export(get_seg)
 export(gpa_theme)
 export(hypos_prep)
 export(read_fb)

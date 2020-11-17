@@ -6,14 +6,14 @@
 #'
 #' @param data Data containing survey response data (pre-processed by hypos_prep or equivalent)
 #' @param treatment Column specifying treatments of interest (e.g., ad_name)
-#' @param survey_q The survey question of interest 
+#' @param survey_q The survey question of interest
 #' @param counts Column containing response counts for the response of interest (default to be "responses")
 #' @param size Column containing sample size for each treatment (default to be "total")
 #' @param alt Alternative hypothesis; can be "one.sided" or "two.sided" (default to be "one.sided")
 #' @return A new data frame containing input data plus an additional column for power values
-#' @examples get_power1(data = df, treatment = "ads", suvey_q = "q4",  counts="responses", size = "total", alt="greater")
+#' @examples get_power_1n(data = df, treatment = "ads", suvey_q = "q4",  counts="responses", size = "total", alt="greater")
 #' @export
-get_power1 <- function(data, treatment, survey_q, prop="percent", size = "total", alt="one.sided"){
+get_power_1n <- function(data, treatment, survey_q, prop="percent", size = "total", alt="one.sided"){
   name <- paste0("power_",survey_q)
   data[[name]] <- 0
   data[[name]][which(data[[treatment]] != "Control")] <-
