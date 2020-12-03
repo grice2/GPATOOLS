@@ -53,7 +53,7 @@ get_netp <- function(data, denominator){
     return(x)
   })
   for.model <- cbind(for.model.engagement,for.model.reactions) %>% as_tibble()
-  coefs <- c(0.021879,0.378715,-1.978481,0.086403,3.720785,-0.016704,0.131512)
+  coefs <- c(0.0219134782942504, 0.378960818093135, -1.97223583080424, 0.0897017953434077, 3.72202942687186, -0.0126854393629244, 0.13190699842771)
   attentive_engagement_linear <-  as.matrix(for.model[,c('post_comments', 'post_shares','angry','haha','love','sad','wow')]) %*%
     as.matrix(coefs, ncol=1)
   engagement$attentive_engagement <- for.model$like+attentive_engagement_linear
