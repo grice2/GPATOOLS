@@ -24,7 +24,7 @@
 #' @param denominator The normalization metric, which is usually 'impressions', 'reach', or 'video_views'
 #' @return Data frame or tibble with the net attentive engagement score (i.e.,net_attentive_engagement), positive engagement rate (i.e., attentive_engagement)
 #' and total engagement rate (i.e., responses)
-#' @examples compute_netp(data = combined.data, denominator = "reach")
+#' @examples get_netp(data = combined.data, denominator = "reach")
 #' @export
 get_netp <- function(data, denominator){
   data <- janitor::clean_names(data)

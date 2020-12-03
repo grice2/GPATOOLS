@@ -38,5 +38,5 @@ In this case, we have a couple of lines where denominator is
 many many thousands, so taking the weights off shows the real patterns more clearly.
 }
 \examples{
-compute_netp(data = combined.data, denominator = "reach")
+get_netp(data = combined.data, denominator = "reach")
 }
