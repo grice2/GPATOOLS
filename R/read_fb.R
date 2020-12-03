@@ -9,8 +9,16 @@
 #' read_fb(df_reactions_dir = "reaction_data.csv", df_engagement_dir = "engagement_data.csv")
 #' @export
 read_fb <- function(df_reactions_dir,df_engagement_dir) {
-  df_engagement <- data.table::fread(df_engagement_dir) %>% janitor::clean_names()
-  df_reactions <- data.table::fread(df_reactions_dir) %>% janitor::clean_names()
+  df_reactions <- try(data.table::fread(df_reactions_dir))
+  if (class(df_reactions) == "try-error") {
+    df_reactions <-readxl::read_excel(df_reactions_dir)
+  }
+  df_engagement <- try(data.table::fread(df_engagement_dir))
+  if (class(df_engagement) == "try-error") {
+    df_engagement <-readxl::read_excel(df_engagement_dir)
+  }
+  df_engagement <- df_engagement %>% janitor::clean_names()
+  df_reactions <- df_reactions %>% janitor::clean_names()
   for (feature in c("ad_name","post_reaction_type",'post_reactions')){
     if (!(feature %in% colnames(df_reactions))){
       stop("Variable \"", feature, "\" is missing from \"",deparse(substitute(df_reactions)),"\"" )

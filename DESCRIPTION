@@ -16,7 +16,8 @@ Imports:
 	data.table,
 	janitor,
 	reshape2,
-	pwr
+	pwr,
+	readxl
 RoxygenNote: 7.1.1
 Depends: 
     R (>= 2.10)
