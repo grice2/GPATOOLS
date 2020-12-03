@@ -27,6 +27,7 @@
 #' @examples get_netp(data = combined.data, denominator = "reach")
 #' @export
 get_netp <- function(data, denominator){
+  denominator <- tolower(denominator)
   data <- janitor::clean_names(data)
   data$denominator <- data[[denominator]]
   data$denominator[is.na(data$denominator)] <- 0
