@@ -14,7 +14,7 @@
 summ_netp <- function(data, var1, var2, var3) {
   for (feature in c("attentive_engagement","denominator","responses")){
     if (!(feature %in% colnames(data))){
-      stop("Variable \"", feature, "\" is missing from \"", deparse(substitute(data)),"\"" )
+      stop("Variable \"", feature, "\" is missing from data" )
     }
   }
   if (missing(var3)) {

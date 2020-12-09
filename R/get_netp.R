@@ -35,7 +35,7 @@ get_netp <- function(data, denominator){
   engagement.metrics <- c('post_comments', 'post_shares')
   for (feature in c("ad_name","denominator",reaction.metrics,engagement.metrics)){
     if (!(feature %in% colnames(data))){
-      stop("Variable \"", feature, "\" is missing from \"",deparse(substitute(data)),"\"" )
+      stop("Variable \"", feature, "\" is missing from data" )
     }
   }
   engagement <- data %>% group_by(ad_name) %>%
