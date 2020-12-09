@@ -21,12 +21,12 @@ read_fb <- function(df_reactions_dir,df_engagement_dir) {
   df_reactions <- df_reactions %>% janitor::clean_names()
   for (feature in c("ad_name","post_reaction_type",'post_reactions')){
     if (!(feature %in% colnames(df_reactions))){
-      stop("Variable \"", feature, "\" is missing from \"",deparse(substitute(df_reactions)),"\"" )
+      stop("Variable \"", feature, "\" is missing from data" )
     }
   }
   for (feature in c("ad_name")){
     if (!(feature %in% colnames(df_engagement))){
-      stop("Variable \"", feature, "\" is missing from \"",deparse(substitute(df_engagement)),"\"" )
+      stop("Variable \"", feature, "\" is missing from data" )
     }
   }
   df_reactions <- df_reactions %>% reshape2::dcast(ad_name~post_reaction_type, value.var = 'post_reactions')
