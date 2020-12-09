@@ -9,13 +9,13 @@
 #' read_fb(df_reactions_dir = "reaction_data.csv", df_engagement_dir = "engagement_data.csv")
 #' @export
 read_fb <- function(df_reactions_dir,df_engagement_dir) {
-  df_reactions <- try(data.table::fread(df_reactions_dir))
+  df_reactions <- try(readxl::read_excel(df_reactions_dir))
   if (class(df_reactions) == "try-error") {
-    df_reactions <-readxl::read_excel(df_reactions_dir)
+    df_reactions <-data.table::fread(df_reactions_dir)
   }
-  df_engagement <- try(data.table::fread(df_engagement_dir))
+  df_engagement <- try(readxl::read_excel(df_engagement_dir))
   if (class(df_engagement) == "try-error") {
-    df_engagement <-readxl::read_excel(df_engagement_dir)
+    df_engagement <-data.table::fread(df_engagement_dir)
   }
   df_engagement <- df_engagement %>% janitor::clean_names()
   df_reactions <- df_reactions %>% janitor::clean_names()
