@@ -17,7 +17,7 @@ get_power_1n <- function(data, treatment, survey_q, prop="percent", size = "tota
   name <- paste0("power_",survey_q)
   data[[name]] <- 0
   data[[name]][which(data[[treatment]] != "Control")] <-
-    round(power.prop.test(n=data[[size]],
+    round(power.prop.test(n=data[[size]][which(data[[treatment]] != "Control")],
                           p1 = data[[prop]][which(data[[treatment]] != "Control")],
                           p2 = data[[prop]][which(data[[treatment]] == "Control")],
                           sig.level = 0.05,
