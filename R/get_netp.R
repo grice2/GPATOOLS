@@ -38,9 +38,7 @@ get_netp <- function(data, denominator){
       stop("Variable \"", feature, "\" is missing from data" )
     }
   }
-  engagement <- data %>% dplyr::group_by(ad_name) %>%
-    mutate(denominator_reactions=sum(denominator, na.rm=T))
-  summary(engagement$denominator_reactions)
+
   for.model.engagement <- apply(engagement[,engagement.metrics], 2,
                                 function(x){
                                   x <- x/(engagement$denominator)
@@ -48,7 +46,7 @@ get_netp <- function(data, denominator){
                                   return(x)
                                 })
   for.model.reactions <- apply(engagement[,reaction.metrics], 2, function(x){
-    x <- x/as.numeric(engagement$denominator_reactions)
+    x <- x/as.numeric(engagement$denominator)
     x[is.na(x)] <- 0
     return(x)
   })
