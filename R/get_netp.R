@@ -38,6 +38,7 @@ get_netp <- function(data, denominator){
       stop("Variable \"", feature, "\" is missing from data" )
     }
   }
+  engagement <- data
 
   for.model.engagement <- apply(engagement[,engagement.metrics], 2,
                                 function(x){
