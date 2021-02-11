@@ -10,7 +10,8 @@ get_power_1n(
   survey_q,
   prop = "percent",
   size = "total",
-  alt = "one.sided"
+  alt = "one.sided",
+  control = "Control"
 )
 }
 \arguments{
@@ -34,6 +35,10 @@ This function generates the power values associated with
 several treatments against a control, for a single survey question where
 the sample size is equal across all (treatment and control). For unequal sample size, see get_power2()
 }
+\details{
+Developer note: users can take advantages of the "control" parameter to  perform hypothesis testing in the event no control variable is present.
+}
 \examples{
-get_power_1n(data = df, treatment = "ads", suvey_q = "q4",  counts="responses", size = "total", alt="greater")
+get_power_1n(data = df, treatment = "ads", suvey_q = "q4",  counts="responses", size = "total", alt="greater", control = "Control")
+get_power_1n(data = df, treatment = "ads", suvey_q = "q4",  counts="responses", size = "total", alt="greater", control = "Biden")
 }
