@@ -18,31 +18,21 @@ read_all <- function(dir, sheet = "Individuals Coded"){
   }
   df$survey <- basename(file_list[1])
   df_list <- list(df)
-  j<- 1
-  for (i in 2:length(file_list)){
-    temp <- try(readxl::read_excel(file_list[i], sheet = sheet))
-    if (class(temp) == "try-error") {
-      temp <-data.table::fread(file_list[i])
-    }
-    temp$survey <- basename(file_list[i])
-    if (prod(colnames(df) == colnames(temp)) == 1){
-      df <- rbindlist(list(df, temp), use.names = T)
-      df_list[[j]] <- df
-    }
-    else {
-      k <- 1
-      need_to_append <- TRUE
-      while (k <= j) {
-        if(prod(colnames(temp) == colnames(df_list[[k]])) == 1){
-          df_list[[k]] <- rbindlist(list(df_list[[k]], temp), use.names = T)
-          need_to_append <- FALSE
-        }
-        k <- k+1
+
+  for (id in 2:length(file_list)){
+    temp <- try(readxl::read_excel(file_list[id], sheet = sheet))
+    if (class(temp) == "try-error") {temp <-data.table::fread(file_list[id])}
+    temp$survey <- basename(file_list[id])
+    i<-1
+    while (i <= length(df_list)) {
+      if (prod(colnames(df_list[[i]]) == colnames(temp)) == 1){
+        df_list[[i]] <- rbindlist(list(df_list[[i]], temp), use.names = T)
+        break
       }
-      if (k>j & need_to_append) {
-        df_list[[k]] <- temp
-        j <- j+1
-      }
+      i<- i+1
+    }
+    if (i>length(df_list)) {
+      df_list[[length(df_list)+1]] <- temp
     }
   }
 
