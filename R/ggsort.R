@@ -11,7 +11,7 @@
 #' @param by Quanitative variable that determine the order
 #' @param attr Attribute variable to filter (Default to NA)
 #' @param ctrl_posn Position of the control variable: "Top", "Bottom", "Default"
-#' @param decreasing Decreasing order of the variable specified in "by" (Default to "decreasing")
+#' @param decreasing Decreasing order of the variable specified in "by" (Defaults to "increasing")
 #' @return Data frame with "var" sorted by "by" and attributes specified in "attr" and the position of the control specified in "ctrl_posn"
 #' @examples ad_analysis <- ad_analysis %>% ggsort(var = "text", by = "netp", attr = c("age", "Over 35"), ctrl_posn = "Bottom")
 #' @export 
