@@ -10,7 +10,8 @@ get_alpha(
   survey_q,
   counts = "responses",
   size = "total",
-  alt = "greater"
+  alt = "greater",
+  control = "Control"
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ get_alpha(
 \item{size}{Column containing sample size for each treatment (default to be "total")}
 
 \item{alt}{Alternative hypothesis; can be "greater", "less", or "two.sided" (default to be "greater")}
+
+\item{control}{Variable serving as the control (default to "Control")}
 }
 \value{
 A new data frame containing input data plus an additional column for p-values
@@ -38,7 +41,10 @@ Data must have been preprocessed by hypos_prep() or equivalent, and should conta
 summarized at the desired treatment level, for a single survey question. Preprocessing that generates input data usually looks like this:
 input_df <- survey_data %>% group_by(treatment,question) %>% summarise(responses=n()) %>% group_by(treatment) %>%
 mutate(total = sum(responses)) %>% mutate(percent = responses/total) %>% filter(question == value)
+
+Developer note: users can take advantages of the "control" parameter to  perform hypothesis testing in the event no control variable is present.
 }
 \examples{
-get_alpha(data = df, treatment = "ads", suvey_q = "q4", counts="responses", size = "total", alt="greater")
+get_alpha(data = df, treatment = "ads", suvey_q = "q4", counts="responses", size = "total", alt="greater", control = "Control")
+get_alpha(data = df, treatment = "ads", suvey_q = "q4", counts="responses", size = "total", alt="greater", control = "Biden")
 }

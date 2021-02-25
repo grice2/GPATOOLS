@@ -11,7 +11,8 @@ get_power_2n(
   prop = "percent",
   n1,
   n2,
-  alt = "greater"
+  alt = "greater",
+  control = "Control"
 )
 }
 \arguments{
@@ -37,6 +38,10 @@ This function generates the power values associated with
 several treatments against a control, for a single survey question, where
 the sample size is different between treatment and control.
 }
+\details{
+Developer note: users can take advantages of the "control" parameter to  perform hypothesis testing in the event no control variable is present.
+}
 \examples{
-get_power_2n(data = df, treatment = "ads", suvey_q = "Q4",  n1=1200, n2=600, alt="greater")
+get_power_2n(data = df, treatment = "ads", suvey_q = "Q4",  n1=1200, n2=600, alt="greater", control = "Control")
+get_power_2n(data = df, treatment = "ads", suvey_q = "Q4",  n1=1200, n2=600, alt="greater", control = "Naturalization")
 }
