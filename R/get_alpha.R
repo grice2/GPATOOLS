@@ -16,13 +16,13 @@
 #' @param counts Column containing response counts for the question of interest (default to be "responses")
 #' @param size Column containing sample size for each treatment (default to be "total")
 #' @param alt Alternative hypothesis; can be "greater", "less", or "two.sided" (default to be "greater")
-#' @param control Variable serving as the control (default to "control")
+#' @param control Variable serving as the control (default to "Control")
 #' 
 #' @return A new data frame containing input data plus an additional column for p-values
-#' @examples get_alpha(data = df, treatment = "theme", survey_q = "q4", counts="responses", size = "total", alt="greater", control = "control")
+#' @examples get_alpha(data = df, treatment = "theme", survey_q = "q4", counts="responses", size = "total", alt="greater", control = "Control")
 #' @examples get_alpha(data = df, treatment = "ads", survey_q = "q4", counts="responses", size = "total", alt="greater", control = "Biden")
 #' @export
-get_alpha <- function(data, treatment, survey_q, counts="responses", size = "total", alt="greater", control = "control"){
+get_alpha <- function(data, treatment, survey_q, counts="responses", size = "total", alt="greater", control = "Control"){
   name <- paste0("pval_",survey_q)
   data[[name]] <- 0
   for (i in which(data[[treatment]] != control)){
