@@ -1,8 +1,8 @@
 #' Extract Text from Variable of Interest
 #'
-#' This functions allows for the extraction of text from a variable to make a new variable.
+#' This function allows for the extraction of text from a variable to make a new variable.
 #' 
-#' Developer note: Very useful when use with read_all()
+#' Developer note: Very useful when used with read_all()
 #'
 #' @param data Data containing variables of interest
 #' @param from The varible from which text will be extracted

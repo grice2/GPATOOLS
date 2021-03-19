@@ -1,6 +1,6 @@
 #' Data Preparation for P-value and Power Statistics Computation
 #'
-#' This function summarises survey reponse data at the desired treatment level, 
+#' This function summarizes survey response data by the desired treatment level, 
 #' for a single question and a single response of interest.
 #'
 #' @param data Data containing survey response data
